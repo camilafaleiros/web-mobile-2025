@@ -1,34 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Gerador de Dicas de Bem-Estar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonte do Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" 
+    rel="stylesheet"
+  >
+
+  <!-- Link para o arquivo CSS externo -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Cabeçalho -->
   <header>
     <h1>Gerador de Dicas de Bem-Estar</h1>
-    <p>Aqui você encontra dicas para melhorar sua saúde e qualidade de vida!</p>
   </header>
-  
-  <!-- Conteúdo Principal -->
+
   <main>
-    <section id="gerador-dica">
-      <h2>Gerador de Dicas</h2>
+    <section id="gerador-de-dicas" class="gerador-de-dicas">
       <!-- Botão para gerar dica -->
-      <button id="botaoGerar">Gerar Dica</button>
-      
-      <!-- Espaço onde a dica será exibida -->
-      <p id="areaDica"><!-- Dica virá aqui --></p>
+      <section id="area-gerar-dica" class="area-gerar-dica">
+        <button id="btn-gerar-dica">Gerar Dica</button>
+      </section>
+
+      <!-- Exibição da dica -->
+      <section id="exibicao-dica" class="exibicao-dica">
+        <section id="icone-estrela" class="icone-estrela">★</section>
+        <p id="texto-dica">Clique em "Gerar Dica" para começar!</p>
+      </section>
+
+      <!-- Botões curtir e compartilhar -->
+      <section id="acoes" class="acoes">
+        <section id="botao-like" class="botao-like">
+          <button id="btn-like">Gostei</button>
+        </section>
+        <section id="botao-compartilhar" class="botao-compartilhar">
+          <button id="btn-compartilhar">Compartilhar</button>
+        </section>
+      </section>
+
+      <!-- Campo para inserir comentário/dica extra -->
+      <section id="area-dica-extra" class="area-dica-extra">
+        <label for="input-dica-extra">Adicionar comentário ou dica:</label>
+        <textarea id="input-dica-extra" rows="3"></textarea>
+      </section>
+
+      <!-- Botão de envio -->
+      <section id="enviar-dica-extra" class="enviar-dica-extra">
+        <button id="btn-enviar-dica-extra">Enviar</button>
+      </section>
     </section>
   </main>
-  
-  <!-- Rodapé -->
+
   <footer>
     <p>&copy; 2025 Bem-Estar - Todos os direitos reservados</p>
   </footer>
+
+  <!-- Modal para exibir mensagens -->
+  <section id="modal-container" class="modal-container">
+    <section id="modal-content" class="modal-content">
+      <span id="modal-close" class="modal-close">&times;</span>
+      <p id="modal-message" class="modal-message"></p>
+    </section>
+  </section>
+
+  <!-- Container para os balões de comentário -->
+  <section id="bubble-container" class="bubble-container"></section>
+
+  <!-- Importando o arquivo JavaScript externo (dentro da pasta js) -->
+  <script src="js/main.js"></script>
 </body>
 </html>
-
-
-
