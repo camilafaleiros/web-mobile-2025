@@ -1,0 +1,239 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Corpo com gradiente de fundo */
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  /* Cabeçalho */
+  header {
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+  }
+  
+  /* Main centralizado */
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  /* Container principal (card) */
+  #gerador-de-dicas {
+    background-color: #fff;
+    max-width: 480px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+    z-index: 1;
+  }
+  
+  /* Animação suave de entrada */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .area-gerar-dica,
+  .enviar-dica-extra,
+  .area-dica-extra {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Container para os botões separados (AÇÕES) */
+  .acoes {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Cada botão em seu container */
+  .botao-like,
+  .botao-compartilhar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Botões gerais */
+  button {
+    background-color: #ff8fab;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #f76790;
+    transform: translateY(-2px);
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+  /* Exibição da dica */
+  .exibicao-dica {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+  
+  /* Ícone ou estrela no centro */
+  .icone-estrela {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #ff8fab;
+  }
+  
+  #texto-dica {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #444;
+    min-height: 2.5em;
+  }
+  
+  .area-dica-extra label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #666;
+  }
+  
+  .area-dica-extra textarea {
+    resize: none;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  /* Rodapé */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  @media (max-width: 600px) {
+    #gerador-de-dicas {
+      margin: 0 1rem;
+      padding: 1.5rem 1rem;
+    }
+  
+    header h1 {
+      font-size: 1.5rem;
+    }
+  
+    .acoes {
+      flex-direction: column;
+    }
+  
+    .botao-like,
+    .botao-compartilhar {
+      width: 100%;
+    }
+  }
+  
+  /* Estilização da Modal */
+  #modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  #modal-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+  }
+  
+  #modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+  }
+  
+  #modal-message {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #444;
+  }
+  
+  /* Container para os comentários em balões */
+  #bubble-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 500;
+  }
+  
+  /* Estilo dos balões de comentário - aumentado */
+  .comment-bubble {
+    position: absolute;
+    background: #fff;
+    border: 2px solid #ff8fab;
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-size: 1.9rem;
+    color: #444;
+    max-width: 400px;
+    opacity: 0.9;
+  }
+  
