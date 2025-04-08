@@ -61,23 +61,17 @@ const btnLike = document.getElementById("btn-like");
 const btnCompartilhar = document.getElementById("btn-compartilhar");
 const btnEnviarDicaExtra = document.getElementById("btn-enviar-dica-extra");
 const inputDicaExtra = document.getElementById("input-dica-extra");
-
-/*
-// elementos - gerar dica
 const modalContainer = document.getElementById("modal-container");
 const modalMessage = document.getElementById("modal-message");
 const modalClose = document.getElementById("modal-close");
-*/
+const bubbleContainer = document.getElementById("bubble-container");
 
-// gera dica
+
+// gerar dica
 btnGerarDica.addEventListener("click", function() {
   const indiceAleatorio = Math.floor(Math.random() * dicas.length);
   textoDica.textContent = dicas[indiceAleatorio];
 });
-
-
-// comentários em balao
-const bubbleContainer = document.getElementById("bubble-container");
 
 // exibir modal - por favor, escreva algo antes de enviar
 function showModal(message) {
@@ -120,13 +114,23 @@ function addBubbleComment(text) {
   bubbleContainer.appendChild(bubble);
 }
 
+// comentar
+btnEnviarDicaExtra.addEventListener("click", function() {
+  const textoExtra = inputDicaExtra.value.trim();
+  if (textoExtra) {
+    showModal(`Seu comentário/dica extra: ${textoExtra}`);
+    addBubbleComment(textoExtra);
+    inputDicaExtra.value = "";
+  } else {
+    showModal("Por favor, escreva algo antes de enviar.");
+  }
+});
 
 // like
 btnLike.addEventListener("click", function() {
   likes++;
   showModal(`Você curtiu esta dica! Total de likes: ${likes}`);
 });
-
 
 // compartilhar - copia o link
 btnCompartilhar.addEventListener("click", function () {
@@ -157,14 +161,4 @@ btnCompartilhar.addEventListener("click", function () {
   }
 });
 
-// comentar
-btnEnviarDicaExtra.addEventListener("click", function() {
-  const textoExtra = inputDicaExtra.value.trim();
-  if (textoExtra) {
-    showModal(`Seu comentário/dica extra: ${textoExtra}`);
-    addBubbleComment(textoExtra);
-    inputDicaExtra.value = "";
-  } else {
-    showModal("Por favor, escreva algo antes de enviar.");
-  }
-});
+
