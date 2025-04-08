@@ -62,10 +62,19 @@ const btnCompartilhar = document.getElementById("btn-compartilhar");
 const btnEnviarDicaExtra = document.getElementById("btn-enviar-dica-extra");
 const inputDicaExtra = document.getElementById("input-dica-extra");
 
-// dica aleatoria
+/*
+// elementos - gerar dica
 const modalContainer = document.getElementById("modal-container");
 const modalMessage = document.getElementById("modal-message");
 const modalClose = document.getElementById("modal-close");
+*/
+
+// gera dica
+btnGerarDica.addEventListener("click", function() {
+  const indiceAleatorio = Math.floor(Math.random() * dicas.length);
+  textoDica.textContent = dicas[indiceAleatorio];
+});
+
 
 // comentários em balao
 const bubbleContainer = document.getElementById("bubble-container");
@@ -111,11 +120,6 @@ function addBubbleComment(text) {
   bubbleContainer.appendChild(bubble);
 }
 
-// gera dica
-btnGerarDica.addEventListener("click", function() {
-  const indiceAleatorio = Math.floor(Math.random() * dicas.length);
-  textoDica.textContent = dicas[indiceAleatorio];
-});
 
 // like
 btnLike.addEventListener("click", function() {
@@ -123,9 +127,34 @@ btnLike.addEventListener("click", function() {
   showModal(`Você curtiu esta dica! Total de likes: ${likes}`);
 });
 
-// compartilhar - incompleto - só responde que foi compartilhada
-btnCompartilhar.addEventListener("click", function() {
-  showModal("Dica compartilhada com sucesso!");
+
+// compartilhar - copia o link
+btnCompartilhar.addEventListener("click", function () {
+  const url = window.location.href;
+  if (navigator.clipboard && window.isSecureContext) {
+    // copia com a API moderna
+    navigator.clipboard.writeText(url).then(() => {
+      showModal("Link copiado com sucesso!");
+    }).catch(() => {
+      showModal("Erro ao copiar o link. Tente novamente.");
+    });
+  } else {
+    // fallback para navegadores mais antigos
+    const textArea = document.createElement("textarea");
+    textArea.value = url;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      const sucesso = document.execCommand("copy");
+      showModal(sucesso ? "Link copiado com sucesso!" : "Não foi possível copiar o link.");
+    } catch (err) {
+      showModal("Erro ao copiar o link.");
+    }
+
+    document.body.removeChild(textArea);
+  }
 });
 
 // comentar
