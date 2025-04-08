@@ -1,4 +1,4 @@
-// Array de dicas
+// dicas
 const dicas = [
   "Beba bastante água ao longo do dia.",
   "Faça pausas para alongar o corpo durante o trabalho.",
@@ -54,7 +54,7 @@ const dicas = [
 
 let likes = 0;
 
-// Captura de elementos
+// pegando os elementos da pagina
 const btnGerarDica = document.getElementById("btn-gerar-dica");
 const textoDica = document.getElementById("texto-dica");
 const btnLike = document.getElementById("btn-like");
@@ -62,26 +62,26 @@ const btnCompartilhar = document.getElementById("btn-compartilhar");
 const btnEnviarDicaExtra = document.getElementById("btn-enviar-dica-extra");
 const inputDicaExtra = document.getElementById("input-dica-extra");
 
-// Elementos da Modal
+// dica aleatoria
 const modalContainer = document.getElementById("modal-container");
 const modalMessage = document.getElementById("modal-message");
 const modalClose = document.getElementById("modal-close");
 
-// Container para os balões de comentário
+// comentários em balao
 const bubbleContainer = document.getElementById("bubble-container");
 
-// Função para exibir a modal com uma mensagem
+// exibir modal - por favor, escreva algo antes de enviar
 function showModal(message) {
   modalMessage.textContent = message;
   modalContainer.style.display = "flex";
 }
 
-// Função para ocultar a modal
+// ocultar modal
 function hideModal() {
   modalContainer.style.display = "none";
 }
 
-// Fecha a modal ao clicar no 'x' ou fora do conteúdo
+// fechar a modal - 'x' 
 modalClose.addEventListener("click", hideModal);
 modalContainer.addEventListener("click", function(e) {
   if (e.target === modalContainer) {
@@ -89,15 +89,15 @@ modalContainer.addEventListener("click", function(e) {
   }
 });
 
-// Função para adicionar um balão de comentário
+// funcao para adicionar o comentario em balao
 function addBubbleComment(text) {
   const bubble = document.createElement("div");
   bubble.classList.add("comment-bubble");
   bubble.textContent = text;
 
-  // Define aleatoriamente se o balão ficará na lateral esquerda ou direita
+  // balão - lateral esquerda ou direita
   const side = Math.random() < 0.5 ? "left" : "right";
-  // Posição vertical aleatória entre 10% e 80%
+  // posicao vertical aleatória
   const topPosition = Math.floor(Math.random() * 70) + 10;
   
   if (side === "left") {
@@ -107,28 +107,28 @@ function addBubbleComment(text) {
   }
   bubble.style.top = topPosition + "%";
 
-  // Adiciona o balão no container (ele ficará visível até o final da sessão)
+  // adicionar o balão no container (visível até o final da sessão)
   bubbleContainer.appendChild(bubble);
 }
 
-// 1. Gerar Dica
+// gera dica
 btnGerarDica.addEventListener("click", function() {
   const indiceAleatorio = Math.floor(Math.random() * dicas.length);
   textoDica.textContent = dicas[indiceAleatorio];
 });
 
-// 2. Curtir (Gostei)
+// like
 btnLike.addEventListener("click", function() {
   likes++;
   showModal(`Você curtiu esta dica! Total de likes: ${likes}`);
 });
 
-// 3. Compartilhar
+// compartilhar - incompleto - só responde que foi compartilhada
 btnCompartilhar.addEventListener("click", function() {
   showModal("Dica compartilhada com sucesso!");
 });
 
-// 4. Enviar comentário/dica extra
+// comentar
 btnEnviarDicaExtra.addEventListener("click", function() {
   const textoExtra = inputDicaExtra.value.trim();
   if (textoExtra) {
